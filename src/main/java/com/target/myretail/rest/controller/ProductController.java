@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.target.myretail.rest.model.Product;
 import com.target.myretail.rest.service.ProductService;
+
+@Controller
 public class ProductController {
 	
 	@Autowired
