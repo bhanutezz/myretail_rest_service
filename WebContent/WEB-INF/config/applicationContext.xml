@@ -16,20 +16,15 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 
    <context:annotation-config />
    <context:component-scan base-package="com.target.myretail.rest.*"></context:component-scan>
-   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-      <property name="prefix" value="/WEB-INF/jsp"></property>
-      <property name="suffix" value=".jsp"></property>
-   </bean>
    
    <mvc:annotation-driven />
    
-   <mongo:db-factory host="localhost" port="27017" dbname="myretail">
+   <mongo:db-factory host="localhost" port="27017" dbname="myretail" />
    <!-- MongoDb Template -->
-      <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
-      </bean>
-    <!-- Package w/ automatic repositories -->
-    <mongo:repositories base-package="com.target.myretail.rest" />
-   </mongo:db-factory>
+   <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+      <constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+   </bean>
+   <!-- Package w/ automatic repositories -->
+   <mongo:repositories base-package="com.target.myretail.rest" />
 
 </beans>
