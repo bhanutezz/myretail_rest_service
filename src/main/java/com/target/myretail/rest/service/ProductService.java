@@ -39,5 +39,16 @@ public class ProductService {
 		
 		return productName;
 	}
+	
+	public void updateProduct(int id,String jsonStr){
+		JSONObject priceObject = new JSONObject(jsonStr);
+		JSONObject current_price =  priceObject.getJSONObject("current_price");
+		
+		Price newPrice = new Price();
+		newPrice.setValue(current_price.getDouble("value"));
+		newPrice.setCurrency_code(current_price.getString("currency_code"));
+		pricingDao.updateProduct(id, newPrice);
+		
+	}
 
 }

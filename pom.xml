@@ -4,7 +4,7 @@
   <artifactId>myretail-rest-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>myretail_rest_service</name>
+  <name>myretail-rest-service</name>
   <description>Rest service to get product name an API and price from NoSQL database as a single response as well put request to update the pricing information in NoSQL database.</description>
   <dependencies>
       <dependency>

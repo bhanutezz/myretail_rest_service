@@ -18,5 +18,13 @@ public class PricingDao {
 		Price price = mongoTemplate.findOne(Query.query(Criteria.where("productid").is(id)), Price.class);
 		return price;
 	}
+	
+	public void updateProduct(int id, Price newPrice){
+		Price price = readByProductId(id);
+		price.setCurrency_code(newPrice.getCurrency_code());
+		price.setValue(newPrice.getValue());
+		mongoTemplate.save(price);
+		
+	}
 
 }
