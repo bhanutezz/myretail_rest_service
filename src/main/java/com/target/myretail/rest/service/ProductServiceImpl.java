@@ -78,11 +78,15 @@ public class ProductServiceImpl implements ProductService{
 	public void updateProductPrice(int id,String jsonStr){
 		JSONObject priceObject = new JSONObject(jsonStr);
 		JSONObject current_price =  priceObject.getJSONObject("current_price");
-		
-		Price newPrice = new Price();
-		newPrice.setValue(current_price.getDouble("value"));
-		newPrice.setCurrency_code(current_price.getString("currency_code"));
-		pricingDao.updateProductPrice(id, newPrice);
+		// to check productid passed in URI and productid inside the json object
+		if((int)current_price.getInt("productid")==id){
+			Price newPrice = new Price();
+			newPrice.setValue(current_price.getDouble("value"));
+			newPrice.setCurrency_code(current_price.getString("currency_code"));
+			pricingDao.updateProductPrice(id, newPrice);
+		}else{
+			throw new IllegalArgumentException();
+		}
 		
 	}
 
